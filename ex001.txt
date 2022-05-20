@@ -1,0 +1,90 @@
+//  Faça um programa (usando funções) que receba 3 notas de 10 alunos:
+//  a. O programa deve calcular a média, descartando a menor nota de cada aluno. Ao final, deve mostrar a maior e a menor nota(de cada aluno).
+//  b. Mostre também uma média geral da turma, a nota mais alta e a nota mais baixa.
+
+using System;
+
+namespace ex001
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double[] notas = new double[30];
+            //double[] menornota = new double[30];
+            int cont = 0;
+            for (int i = 1; i < 11; i = i + 1)
+            {
+                Console.WriteLine("===============================================");
+                Console.WriteLine("Digite as notas do {0}° aluno: ", i);
+                for (int j = 1; j < 4; j = j + 1)
+                {
+                    Console.Write("=> {0}° nota: ", j);
+                    notas[cont] = Convert.ToDouble(Console.ReadLine());
+                    cont = cont + 1;
+                    //if(j == 1)
+                    //{
+                    //    menornota[cont] = notas
+                    //}
+                }
+            }
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+            Console.WriteLine("A média Geral é: {0}.", Media(notas));
+            Console.WriteLine("A maior nota é: {0}", MaiorNota(notas));
+            Console.WriteLine("A menor nota é: {0}", MenorNota(notas));
+        }
+        static double Media(double[] notas)
+        {
+            double soma = 0, media = 0;
+            for (int i = 0; i < 30; i = i + 1)
+            {
+                soma = soma + notas[i];
+            }
+            media = (soma / notas.Length);
+
+            return media;
+        }
+        static double MaiorNota(double[] notas)
+        {
+            double maior = 0;
+            for (int i = 0; i < 30; i = i + 1)
+            {
+                if(i == 0)
+                {
+                    maior = notas[i];
+                }
+                else if(notas[i] > maior)
+                {
+                    maior = notas[i];
+                }
+            }
+            return maior;
+        }
+        static double MenorNota(double[] notas)
+        {
+            double menor = 0;
+            for (int i = 0; i < 30; i = i + 1)
+            {
+                if (i == 0)
+                {
+                    menor = notas[i];
+                }
+                else if (notas[i] < menor)
+                {
+                    menor = notas[i];
+                }
+            }
+            return menor;
+        }
+        //static double EstudoDeMediaPorAluno(double[] notas)
+        //{
+        //    for (int i = 0; i < 30; i = i + 1)
+        //    {
+        //        while(i < 3)
+        //        {
+                    
+        //        }
+        //    }
+        //}
+    }
+}
