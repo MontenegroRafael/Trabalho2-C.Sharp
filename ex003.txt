@@ -1,0 +1,31 @@
+//  Faça um programa que receba um array de 10 posições e o imprima na ordem inversa.
+
+using System;
+
+namespace ex003
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] valores = new int[10];
+            for (int i = 0; i < 10; i = i + 1)
+            {
+                
+                
+                Console.WriteLine("Digite o {0}° número: ", i + 1);
+                valores[i] = Convert.ToInt32(Console.ReadLine());
+                
+            }
+            Console.WriteLine("-=-=-= Na Ordem inversa fica =-=-=-=-");
+            MostrarInverso(valores);
+        }
+        static void MostrarInverso(int[] valores)
+        {
+            for(int i = 9; i >= 0; i = i - 1)
+            {
+                Console.Write(" {0} ", valores[i]);
+            }
+        }
+    }
+}
