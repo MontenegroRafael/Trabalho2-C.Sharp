@@ -1,0 +1,45 @@
+//  Escreva um jogo, usando funções, em que o usuário informa um valor e o programa gerará um valor aleatório.
+//  O usuário deve ir digitando até acertar, e assim, o programa finaliza.
+
+using System;
+
+namespace ex002
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int computador;
+            int jogador;
+            int cont = 1;
+            Console.WriteLine("=-=-=-=-  JOGO de ADIVINHAR -=-=-=-=");
+            Console.WriteLine("Descubra que número o computador pensou ??? ");
+            Console.Write("Digite um número entre 0 - 10: ");
+            jogador = Convert.ToInt32(Console.ReadLine());
+            computador = random.Next(0, 10);
+            while(jogador != computador)
+            {
+                Console.WriteLine("======================================");
+                if(jogador > computador)
+                {
+                    Console.WriteLine("Errou! => Dica: É menos ");
+                }
+                if(jogador < computador)
+                {
+                    Console.WriteLine("Errou! => Dica: É mais ");
+                }
+                Console.Write("Digite um número entre 0 - 10: ");
+                jogador = Convert.ToInt32(Console.ReadLine());
+                cont = cont + 1;
+            }
+            if (jogador == computador)
+            {
+                Console.WriteLine("======================================");
+                Console.WriteLine("Parabéns! Você a certou.");
+                Console.WriteLine("O computador pensou em {0} e você jogou {1}", computador, jogador);
+                Console.WriteLine("Você usou {0} chances para acertar", cont);
+            }
+        }
+    }
+}
