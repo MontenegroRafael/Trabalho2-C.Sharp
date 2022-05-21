@@ -18,14 +18,20 @@ namespace ex002
             Console.Write("Digite um número entre 0 - 10: ");
             jogador = Convert.ToInt32(Console.ReadLine());
             computador = random.Next(0, 10);
-            while(jogador != computador)
+            Estudo(jogador, computador);
+
+        }
+        static void Estudo(int jogador, int computador)
+        {
+            int cont = 1;
+            while (jogador != computador)
             {
                 Console.WriteLine("======================================");
-                if(jogador > computador)
+                if (jogador > computador)
                 {
                     Console.WriteLine("Errou! => Dica: É menos ");
                 }
-                if(jogador < computador)
+                if (jogador < computador)
                 {
                     Console.WriteLine("Errou! => Dica: É mais ");
                 }
