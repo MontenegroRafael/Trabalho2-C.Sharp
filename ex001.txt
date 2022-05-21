@@ -11,7 +11,6 @@ namespace ex001
         static void Main(string[] args)
         {
             double[] notas = new double[30];
-            //double[] menornota = new double[30];
             int cont = 0;
             for (int i = 1; i < 11; i = i + 1)
             {
@@ -20,18 +19,15 @@ namespace ex001
                 for (int j = 1; j < 4; j = j + 1)
                 {
                     Console.Write("=> {0}° nota: ", j);
-                    notas[cont] = Convert.ToDouble(Console.ReadLine());
+                    notas[cont] = Convert.ToSingle(Console.ReadLine());
                     cont = cont + 1;
-                    //if(j == 1)
-                    //{
-                    //    menornota[cont] = notas
-                    //}
                 }
             }
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-            Console.WriteLine("A média Geral é: {0}.", Media(notas));
-            Console.WriteLine("A maior nota é: {0}", MaiorNota(notas));
-            Console.WriteLine("A menor nota é: {0}", MenorNota(notas));
+            Console.WriteLine(" ===> A média Geral é: {0}.", Media(notas));
+            Console.WriteLine(" ===> A maior nota da Turma é: {0}", MaiorNota(notas));
+            Console.WriteLine(" ===> A menor nota da Turma é: {0}", MenorNota(notas));
+            MostrarNotas(notas);
         }
         static double Media(double[] notas)
         {
@@ -49,11 +45,11 @@ namespace ex001
             double maior = 0;
             for (int i = 0; i < 30; i = i + 1)
             {
-                if(i == 0)
+                if (i == 0)
                 {
                     maior = notas[i];
                 }
-                else if(notas[i] > maior)
+                else if (notas[i] > maior)
                 {
                     maior = notas[i];
                 }
@@ -76,15 +72,45 @@ namespace ex001
             }
             return menor;
         }
-        //static double EstudoDeMediaPorAluno(double[] notas)
-        //{
-        //    for (int i = 0; i < 30; i = i + 1)
-        //    {
-        //        while(i < 3)
-        //        {
-                    
-        //        }
-        //    }
-        //}
-    }
+        static void MostrarNotas(double[] notas)
+        {
+            int cont = 0;
+            for (int i = 1; i < 11; i = i + 1)
+            {
+                
+                double notamenor = 0, notameio = 0, notamaior = 0;
+                Console.WriteLine("===============================================");
+                Console.WriteLine(" => {0}° aluno ", i);
+                for (int j = 1; j < 4; j = j + 1)
+                {
+                    if (j == 1)
+                    {
+                        notamenor = notas[cont];
+                        notameio = notas[cont];
+                        notamaior = notas[cont];
+                    }
+                    if (notas[cont] < notamenor)
+                    {
+                        notamenor = notas[cont];
+                    }
+                    if (notas[cont] > notamaior)
+                    {
+                        notamaior = notas[cont];
+                    }
+                    if ((notas[cont] > notamenor) && (notas[cont] < notamaior))
+                    {
+                        notameio = notas[cont];
+                    }
+                    cont = cont + 1;
+                }
+                Console.WriteLine("======================");
+                Console.WriteLine("=> nota descartada: {0}", notamenor);
+                Console.WriteLine("=> Menor nota : {0}", notameio);
+                Console.WriteLine("=> Maior nota : {0}", notamaior);
+                Console.WriteLine("Média: {0} ", ((notameio + notamaior) / 2));
+
+            }
+        }
+
+    }   
 }
