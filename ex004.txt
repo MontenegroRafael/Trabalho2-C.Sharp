@@ -1,0 +1,80 @@
+//  Faça um programa que calcule o Máximo Divisor comum entre 3 números.
+
+using System;
+
+namespace ex004
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n1, n2, n3;
+            Console.WriteLine("Digite um número inteiro: ");
+            n1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Digite um número inteiro: ");
+            n2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Digite um número inteiro: ");
+            n3 = Convert.ToInt32(Console.ReadLine());
+            int maior = Max(n1, n2, n3);
+            Console.WriteLine("================================================");
+            Console.WriteLine("O maximo divisor comum(m.d.c.) de ({0}, {1} e {2}) = {3} ", n1, n2, n3, MaximoDivisorComum(n1, n2, n3));
+        }
+        static int MaximoDivisorComum(int n1, int n2, int n3)
+        {
+            int mdc = 0;
+            for (int i = 1; i < (Max(n1, n2, n3) + 1); i = i + 1)
+            {
+                if((n1 % i == 0) && (n2 % i == 0) && (n3 % i == 0))
+                {
+                    mdc = i;
+                }
+            }
+            return mdc;
+        }
+        static int Max(int a, int b, int c)
+        {
+            int maior = 0;
+            maior = a;
+            if (b > maior)
+            {
+                maior = b;
+            }
+            if (c > maior)
+            {
+                maior = c;
+            }
+            
+            return maior;
+        }
+        static int Domeio(int a, int b, int c)
+        {
+            int meio = 0;
+            meio = b;
+            if (((a > b) && (a < c)) || ((a > c) && (a < b))) // b - a - c ou c - a - b
+            {
+                meio = a;
+            }
+            if (((c < b) && (c > a)) || ((c < a) && (c > b))) // a - c - b ou b - c - a
+            {
+                meio = c;
+            }
+
+            return meio;
+        }
+        static int Min(int a, int b, int c)
+        {
+            int menor = 0;
+            menor = a;
+            if (b < menor)
+            {
+                menor = b;
+            }
+            if (c < menor)
+            {
+                menor = c;
+            }
+
+            return menor;
+        }
+    }
+}
