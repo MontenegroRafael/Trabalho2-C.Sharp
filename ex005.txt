@@ -1,0 +1,122 @@
+//  Faça um programa que calcule o Mínimo Multiplo comum entre 3 números.
+
+using System;
+
+namespace ex005
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n1, n2, n3;
+            Console.WriteLine("Digite um número inteiro: ");
+            n1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Digite um número inteiro: ");
+            n2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Digite um número inteiro: ");
+            n3 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("================================================");
+            
+            Console.WriteLine("O Mínimo Multiplo Comum(m.m.c.) de ({0}, {1} e {2}) = {3} ", n1, n2, n3, MinimoMultiploComum(n1, n2, n3));
+            Console.WriteLine(MinimoMultiploComum(n1, n2, n3));
+            Console.WriteLine(Max(n1, n2, n3));
+        }
+        static int MinimoMultiploComum(int n1, int n2, int n3)
+        {
+            int mmc = 1;
+            //do
+            //{
+                
+                for(int i = 2; i <= 144; i = i + 1) // Max(n1, n2, n3)
+            {
+                    if (Primo(i))
+                    {
+                        do
+                        {
+                            if ((n1 % i == 0) && (n2 % i == 0) && (n3 % i == 0))
+                            {
+                                n1 = n1 / i;
+                                n2 = n2 / i;
+                                n3 = n3 / i;
+                                mmc = mmc * i;
+                            }
+                            if ((n1 % i == 0) && (n2 % i == 0) && (n3 % i != 0))
+                            {
+                                n1 = n1 / i;
+                                n2 = n2 / i;
+                                mmc = mmc * i;
+                            }
+                            if ((n1 % i == 0) && (n2 % i != 0) && (n3 % i == 0))
+                            {
+                                n1 = n1 / i;
+                                n3 = n3 / i;
+                                mmc = mmc * i;
+                            }
+                            if ((n1 % i != 0) && (n2 % i == 0) && (n3 % i == 0))
+                            {
+                                n2 = n2 / i;
+                                n3 = n3 / i;
+                                mmc = mmc * i;
+                            }
+                            if ((n1 % i == 0) && (n2 % i != 0) && (n3 % i != 0))
+                            {
+                                n1 = n1 / i;
+                                mmc = mmc * i;
+                            }
+                            if ((n1 % i != 0) && (n2 % i == 0) && (n3 % i != 0))
+                            {
+                                n2 = n2 / i;
+                                mmc = mmc * i;
+                            }
+                            if ((n1 % i != 0) && (n2 % i != 0) && (n3 % i == 0))
+                            {
+                                n3 = n3 / i;
+                                mmc = mmc * i;
+                            }
+                        }
+                        while ((n1 % i == 0) || (n2 % i == 0) || (n3 % i == 0)); 
+                    }
+                }  
+            //}
+            //while ((n1 / 1 != 1) && (n2 / 1 != 1) && (n3 / 1 != 1));
+
+            return mmc;
+        }
+        static int Max(int a, int b, int c)
+        {
+            int maior = 0;
+            maior = a;
+            if (b > maior)
+            {
+                maior = b;
+            }
+            if (c > maior)
+            {
+                maior = c;
+            }
+
+            return maior;
+        }
+        static bool Primo(int a)
+        {
+            int cont = 0;
+            for (int i = 2; i <= a; i = i + 1)
+            {
+                if(a % i == 0)
+                {
+                    cont = cont + 1;
+                }
+                
+            }
+            if(cont == 2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+    }
+}
