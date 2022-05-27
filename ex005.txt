@@ -8,74 +8,94 @@ namespace ex005
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Calculadora de Mínimo Multiplo Comum - (m.m.c)");
+            Console.WriteLine(("").PadRight(40, '='));
             int n1, n2, n3;
-            Console.WriteLine("Digite um número inteiro: ");
+            Console.Write("Digite um número inteiro: ");
             n1 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Digite um número inteiro: ");
+            Console.Write("Digite mais número inteiro: ");
             n2 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Digite um número inteiro: ");
+            Console.Write("Digite mais número inteiro: ");
             n3 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("================================================");
-
-            Console.WriteLine("O Mínimo Multiplo Comum(m.m.c.) de ({0}, {1} e {2}) = {3} ", n1, n2, n3, MinimoMultiploComum(n1, n2, n3));
-            // Console.WriteLine(MinimoMultiploComum(n1, n2, n3));
             
+            Console.WriteLine("O Mínimo Multiplo Comum(m.m.c.) de ({0}, {1} e {2}) = {3} .", n1, n2, n3, MinimoMultiploComum(n1, n2, n3)); 
         }
         static int MinimoMultiploComum(int n1, int n2, int n3)
         {
             int mmc = 1;
-            int cont = 1;
+            int cont = 2; // contador para os divisores
             
             while ((n1 / 1 != 1) || (n2 / 1 != 1) || (n3 / 1 != 1))
             {
-                cont = cont + 1;
-                do
+                // Otimização usando a logica do professor.
+                if ((n1 % cont == 0) || (n2 % cont == 0) || (n3 % cont == 0))
                 {
-                    if ((n1 % cont == 0) && (n2 % cont == 0) && (n3 % cont == 0))
-                    {
+                    Console.WriteLine("{0,3} , {1,3} , {2,3} |{3,-3}", n1, n2, n3, cont);
+                    if (n1 % cont == 0)
                         n1 = n1 / cont;
+                    if (n2 % cont == 0)
                         n2 = n2 / cont;
+                    if (n3 % cont == 0)
                         n3 = n3 / cont;
-                        mmc = mmc * cont;
-                    }
-                    else if ((n1 % cont == 0) && (n2 % cont == 0) && (n3 % cont != 0))
-                    {
-                        n1 = n1 / cont;
-                        n2 = n2 / cont;
-                        mmc = mmc * cont;
-                    }
-                    else if ((n1 % cont == 0) && (n2 % cont != 0) && (n3 % cont == 0))
-                    {
-                        n1 = n1 / cont;
-                        n3 = n3 / cont;
-                        mmc = mmc * cont;
-                    }
-                    else if ((n1 % cont != 0) && (n2 % cont == 0) && (n3 % cont == 0))
-                    {
-                        n2 = n2 / cont;
-                        n3 = n3 / cont;
-                        mmc = mmc * cont;
-                    }
-                    else if ((n1 % cont == 0) && (n2 % cont != 0) && (n3 % cont != 0))
-                    {
-                        n1 = n1 / cont;
-                        mmc = mmc * cont;
-                    }
-                    else if ((n1 % cont != 0) && (n2 % cont == 0) && (n3 % cont != 0))
-                    {
-                        n2 = n2 / cont;
-                        mmc = mmc * cont;
-                    }
-                    else if ((n1 % cont != 0) && (n2 % cont != 0) && (n3 % cont == 0))
-                    {
-                        n3 = n3 / cont;
-                        mmc = mmc * cont;
-                    }
+                    mmc = mmc * cont;
                 }
-                while ((n1 % cont == 0) || (n2 % cont == 0) || (n3 % cont == 0));
-
-
+                else
+                    cont = cont + 1;
+                //do
+                //{
+                //    cont = cont + 1;
+                //    if ((n1 % cont == 0) && (n2 % cont == 0) && (n3 % cont == 0))
+                //    {
+                //        Console.WriteLine("{0,3} , {1,3} , {2,3} |{3,-3}", n1, n2, n3, cont);
+                //        n1 = n1 / cont;
+                //        n2 = n2 / cont;
+                //        n3 = n3 / cont;
+                //        mmc = mmc * cont;
+                //    }
+                //    else if ((n1 % cont == 0) && (n2 % cont == 0) && (n3 % cont != 0))
+                //    {
+                //        Console.WriteLine("{0,3} , {1,3} , {2,3} |{3,-3}", n1, n2, n3, cont);
+                //        n1 = n1 / cont;
+                //        n2 = n2 / cont;
+                //        mmc = mmc * cont;
+                //    }
+                //    else if ((n1 % cont == 0) && (n2 % cont != 0) && (n3 % cont == 0))
+                //    {
+                //        Console.WriteLine("{0,3} , {1,3} , {2,3} |{3,-3}", n1, n2, n3, cont);
+                //        n1 = n1 / cont;
+                //        n3 = n3 / cont;
+                //        mmc = mmc * cont;
+                //    }
+                //    else if ((n1 % cont != 0) && (n2 % cont == 0) && (n3 % cont == 0))
+                //    {
+                //        Console.WriteLine("{0,3} , {1,3} , {2,3} |{3,-3}", n1, n2, n3, cont);
+                //        n2 = n2 / cont;
+                //        n3 = n3 / cont;
+                //        mmc = mmc * cont;
+                //    }
+                //    else if ((n1 % cont == 0) && (n2 % cont != 0) && (n3 % cont != 0))
+                //    {
+                //        Console.WriteLine("{0,3} , {1,3} , {2,3} |{3,-3}", n1, n2, n3, cont);
+                //        n1 = n1 / cont;
+                //        mmc = mmc * cont;
+                //    }
+                //    else if ((n1 % cont != 0) && (n2 % cont == 0) && (n3 % cont != 0))
+                //    {
+                //        Console.WriteLine("{0,3} , {1,3} , {2,3} |{3,-3}", n1, n2, n3, cont);
+                //        n2 = n2 / cont;
+                //        mmc = mmc * cont;
+                //    }
+                //    else if ((n1 % cont != 0) && (n2 % cont != 0) && (n3 % cont == 0))
+                //    {
+                //        Console.WriteLine("{0,3} , {1,3} , {2,3} |{3,-3}", n1, n2, n3, cont);
+                //        n3 = n3 / cont;
+                //        mmc = mmc * cont;
+                //    }
+                //}
+                //while ((n1 % cont == 0) || (n2 % cont == 0) || (n3 % cont == 0));
             }
+            Console.WriteLine("{0,3} , {1,3} , {2,3} |", n1, n2, n3);
             return mmc;
         }
         
