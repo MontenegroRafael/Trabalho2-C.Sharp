@@ -14,7 +14,7 @@ namespace ex001
             int cont = 0;
             for (int i = 1; i < 11; i = i + 1)
             {
-                Console.WriteLine("===============================================");
+                Console.WriteLine("============================");
                 Console.WriteLine("Digite as notas do {0}° aluno: ", i);
                 for (int j = 1; j < 4; j = j + 1)
                 {
@@ -27,7 +27,8 @@ namespace ex001
             Console.WriteLine(" ===> A média Geral é: {0}.", Media(notas));
             Console.WriteLine(" ===> A maior nota da Turma é: {0}", MaiorNota(notas));
             Console.WriteLine(" ===> A menor nota da Turma é: {0}", MenorNota(notas));
-            MostrarNotas(notas);
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+            MostrarNotas(notas); 
         }
         static double Media(double[] notas)
         {
@@ -78,15 +79,16 @@ namespace ex001
             for (int i = 1; i < 11; i = i + 1)
             {
                 
-                double notamenor = 0, notameio = 0, notamaior = 0;
-                Console.WriteLine("===============================================");
+                double notamenor = 0, notadomeio = 0, notamaior = 0;
+                Console.WriteLine("--------------------------");
+
                 Console.WriteLine(" => {0}° aluno ", i);
                 for (int j = 1; j < 4; j = j + 1)
                 {
                     if (j == 1)
                     {
                         notamenor = notas[cont];
-                        notameio = notas[cont];
+                        notadomeio = notas[cont];
                         notamaior = notas[cont];
                     }
                     if (notas[cont] < notamenor)
@@ -99,15 +101,15 @@ namespace ex001
                     }
                     if ((notas[cont] > notamenor) && (notas[cont] < notamaior))
                     {
-                        notameio = notas[cont];
+                        notadomeio = notas[cont];
                     }
                     cont = cont + 1;
                 }
-                Console.WriteLine("======================");
-                Console.WriteLine("=> nota descartada: {0}", notamenor);
-                Console.WriteLine("=> Menor nota : {0}", notameio);
+                Console.WriteLine("==========================");
+                Console.WriteLine("=> Nota descartada: {0}", notamenor);
+                Console.WriteLine("=> Menor nota : {0}", notadomeio);
                 Console.WriteLine("=> Maior nota : {0}", notamaior);
-                Console.WriteLine("Média: {0} ", ((notameio + notamaior) / 2));
+                Console.WriteLine("Média: {0} ", ((notadomeio + notamaior) / 2));
 
             }
         }
